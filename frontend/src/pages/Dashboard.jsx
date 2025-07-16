@@ -4,16 +4,19 @@ import { fetchCustomerType } from '../features/customerTypeSlice';
 import { fetchAccountIndustry } from '../features/accountIndustrySlice';
 import { fetchTeam } from '../features/teamSlice';
 import { fetchAcvRange } from '../features/acvRangeSlice';
+import DataCard from '../components/DataCard';
+import { Grid } from '@mui/material';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  // selectors for datasets
-  const customerType = useSelector((state) => state.customerType.data);
-  const accountIndustry = useSelector((state) => state.accountIndustry.data);
-  const team = useSelector((state) => state.team.data);
-  const acvRange = useSelector((state) => state.acvRange.data);
+  // Select all dataset slices from Redux store
+  const customerType = useSelector((state) => state.customerType?.data);
+  const accountIndustry = useSelector((state) => state.accountIndustry?.data);
+  const team = useSelector((state) => state.team?.data);
+  const acvRange = useSelector((state) => state.acvRange?.data);
 
+  // Load all datasets on component mount
   useEffect(() => {
     dispatch(fetchCustomerType());
     dispatch(fetchAccountIndustry());
@@ -22,35 +25,32 @@ const Dashboard = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h3>Customer Type</h3>
-      <ul>
-        {customerType.map((item, i) => (
-          <li key={i}>{item.closed_fiscal_quarter} - {item.Cust_Type}: ${item.acv.toFixed(2)}</li>
-        ))}
-      </ul>
+    <Grid container spacing={2}>
+      {/* ensuring array is loaded before rendering */}
+      {Array.isArray(customerType) && (
+        <Grid item xs={12} md={6}>
+          <DataCard title="Customer Type" data={customerType} labelKey="Cust_Type" />
+        </Grid>
+      )}
 
-      <h3>Account Industry</h3>
-      <ul>
-        {accountIndustry.map((item, i) => (
-          <li key={i}>{item.closed_fiscal_quarter} - {item.Acct_Industry}: ${item.acv.toFixed(2)}</li>
-        ))}
-      </ul>
+      {Array.isArray(accountIndustry) && (
+        <Grid item xs={12} md={6}>
+          <DataCard title="Account Industry" data={accountIndustry} labelKey="Acct_Industry" />
+        </Grid>
+      )}
 
-      <h3>Team</h3>
-      <ul>
-        {team.map((item, i) => (
-          <li key={i}>{item.closed_fiscal_quarter} - {item.Team}: ${item.acv.toFixed(2)}</li>
-        ))}
-      </ul>
+      {Array.isArray(team) && (
+        <Grid item xs={12} md={6}>
+          <DataCard title="Team" data={team} labelKey="Team" />
+        </Grid>
+      )}
 
-      <h3>ACV Range</h3>
-      <ul>
-        {acvRange.map((item, i) => (
-          <li key={i}>{item.closed_fiscal_quarter} - {item.ACV_Range}: ${item.acv.toFixed(2)}</li>
-        ))}
-      </ul>
-    </div>
+      {Array.isArray(acvRange) && (
+        <Grid item xs={12} md={6}>
+          <DataCard title="ACV Range" data={acvRange} labelKey="ACV_Range" />
+        </Grid>
+      )}
+    </Grid>
   );
 };
 
