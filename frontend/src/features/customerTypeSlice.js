@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// fetch customer type data from api
 export const fetchCustomerType = createAsyncThunk(
     'customerType/fetchCustomerType',
     async () => {
@@ -9,11 +10,12 @@ export const fetchCustomerType = createAsyncThunk(
     }
 );
 
+// create the slice
 const customerTypeSlice = createSlice({
     name: 'customerType',
     initialState: {
         data: [],
-        status: 'idle',
+        status: 'idle', // loading state
         error: null,
     },
     reducers: {},
