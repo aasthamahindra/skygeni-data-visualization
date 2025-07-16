@@ -8,9 +8,11 @@ const { PORT } = process.env;
 app.use(cors());
 app.use(express.json());
 
+require('./routes/routes')(app);
+
 app.get('/', (req, res) => {
     res.status(200).send({
-        message: 'API is running',
+        message: 'APIs are running',
         data: [],
     });
 });
