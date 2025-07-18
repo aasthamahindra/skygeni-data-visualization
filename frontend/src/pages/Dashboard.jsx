@@ -5,6 +5,7 @@ import { fetchAccountIndustry } from '../features/accountIndustrySlice';
 import { fetchTeam } from '../features/teamSlice';
 import { fetchAcvRange } from '../features/acvRangeSlice';
 import DataCard from '../components/DataCard';
+import CustomerTypeChart from '../components/charts/CustomerTypeChart';
 import { Grid } from '@mui/material';
 
 const Dashboard = () => {
@@ -28,9 +29,14 @@ const Dashboard = () => {
     <Grid container spacing={2}>
       {/* ensuring array is loaded before rendering */}
       {Array.isArray(customerType) && (
-        <Grid item xs={12} md={6}>
-          <DataCard title="Customer Type" data={customerType} labelKey="Cust_Type" />
-        </Grid>
+        <>
+          <Grid item xs={12} md={6}>
+            <DataCard title="Customer Type" data={customerType} labelKey="Cust_Type" />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <CustomerTypeChart data={customerType} />
+          </Grid>
+        </>
       )}
 
       {Array.isArray(accountIndustry) && (
