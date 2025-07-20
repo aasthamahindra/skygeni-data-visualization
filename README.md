@@ -1,8 +1,6 @@
-# Skylark Genie - Data Visualization Dashboard
+# Data Visualization Dashboard
 
-![Skylark Genie Logo](https://github.com/aasthamahindra/skygeni-data-visualization/assets/your-username/skylark-genie-logo.png)
-
-A comprehensive data visualization platform built with React, D3.js, and Express.js that provides powerful insights into business metrics and analytics.
+![UI Screenshot](https://github.com/aasthamahindra/skygeni-data-visualization/image.png)
 
 ## Features
 
@@ -58,7 +56,6 @@ A comprehensive data visualization platform built with React, D3.js, and Express
    ```bash
    cd backend
    npm install
-   cp .env.example .env  # Update the .env file with your configuration
    ```
 
 3. Set up the frontend:
@@ -129,24 +126,7 @@ npm run dev  # Start Vite development server
 
 #### Backend (.env)
 ```env
-PORT=3001
+PORT=4000
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
 ```
-
-### Production Build
-
-1. Build the frontend:
-   ```bash
-   cd frontend
-   npm run build
-   ```
-
-2. Serve the frontend with a production server or deploy the `dist` folder to your hosting service.
-
-3. For the backend, use a process manager like PM2 in production:
-   ```bash
-   npm install -g pm2
-   cd backend
-   pm2 start src/server.js --name "skygeni-backend"
-   ```
