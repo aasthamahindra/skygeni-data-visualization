@@ -1,6 +1,6 @@
 # Data Visualization Dashboard
 
-![UI Screenshot](https://github.com/aasthamahindra/skygeni-data-visualization/image.png)
+![UI Screenshot](https://github.com/aasthamahindra/skygeni-data-visualization/blob/main/image.png)
 
 ## Features
 
