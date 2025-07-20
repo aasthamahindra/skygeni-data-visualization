@@ -10,6 +10,6 @@ export const store = configureStore({
         customerType: customerTypeReducer,
         accountIndustry: accountIndustryReducer,
         team: teamReducer,
-        acvRangeReducer: acvRangeReducer,
+        acvRange: acvRangeReducer,  // Fixed: Changed from acvRangeReducer to acvRange
     },
 });
